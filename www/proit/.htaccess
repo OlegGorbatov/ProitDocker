@@ -1,0 +1,47 @@
+Options -Indexes 
+ErrorDocument 404 /404.php
+
+#<IfModule mod_php7.c>
+#  php_flag session.use_trans_sid off
+#  php_value display_errors 0
+#  php_value mbstring.func_overload 2
+#  php_value mbstring.internal_encoding UTF-8
+#</IfModule>
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^api/(.*)$ api/init.php
+	
+	RewriteCond %{HTTP_HOST} !^proit\.test$ [NC]
+	RewriteRule ^(.*)$ http://proit.test/$1 [L,R=301]
+           
+#   Перевод сайта в нижний регистр 
+#   RewriteCond expr "tolower(%{REQUEST_URI}) =~ /(.+)/"
+#   RewriteRule [A-Z] %1 [R=301,L]
+
+#   Удаляем www  
+#   RewriteCond %{HTTP_HOST} ^www\.(.*)$
+#   RewriteRule ^(.*)$ http://%1/$1 [L,R=301] 
+
+#   Удаляем index.html
+#   RewriteCond %{REQUEST_URI} ^(.*)/index.html$
+#   RewriteRule ^(.*)$ %1/ [R=301,L]
+
+#   Удаляем index.htm
+#   RewriteCond %{REQUEST_URI} ^(.*)/index.htm$
+#   RewriteRule ^(.*)$ %1/ [R=301,L]
+    
+#   Удаляем index.php  
+#   RewriteCond %{REQUEST_URI} ^(.*)/index\.php$
+#   RewriteRule ^(.*)index\.php$ http://%{HTTP_HOST}/$1 [R=301,L]
+    
+    
+</IfModule>
+
+<IfModule mod_dir.c>
+#  DirectoryIndex index.php index.html
+</IfModule>

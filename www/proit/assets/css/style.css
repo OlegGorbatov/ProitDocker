@@ -1,0 +1,35 @@
+.content {
+    width:1030px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    position: relative;
+}
+.main-page {
+    width: 100% !important;
+}
+.list-group input {
+    width:300px;
+}
+.list-group {
+    width: 515px !important;
+}
+.number-contacts {
+    display:inline;
+    float: right;
+}
+.number-contacts input {
+    width: 40px; height:37px;text-align: center
+}
+.list-group {
+    width: 515px !important;
+}
+
+.list-group input {
+    width:300px;
+}
+.thead-dark a {
+    color:darkgrey;
+}
+.thead-dark i {
+    vertical-align: bottom;
+}
