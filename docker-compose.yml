@@ -24,7 +24,17 @@ services:
         volumes:
             - ./mysql:/var/lib/mysql
         environment:
-            MYSQL_ROOT_PASSWORD: secret
+            MYSQL_USER: root
+            MYSQL_DATABASE: proit_test
+            MYSQL_ROOT_PASSWORD: root
+        proit_test:
+           image: mysql:5.7
+            volumes:
+            - ./mysql:db-backup/.d
+            environment:
+                    MYSQL_USER: root
+                    MYSQL_DATABASE: proit_test
+                    MYSQL_ROOT_PASSWORD: root
     pma:
         image: phpmyadmin/phpmyadmin
         restart: always
@@ -35,4 +45,5 @@ services:
         environment:
           PMA_HOST: mysql
           MYSQL_USERNAME: root
-          MYSQL_ROOT_PASSWORD: root            
+          MYSQL_ROOT_PASSWORD: root      
+          MYSQL_DATABASE: proit_test
